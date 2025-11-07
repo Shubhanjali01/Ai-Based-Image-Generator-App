@@ -22,7 +22,7 @@ const Image = styled.div`
   border-radius: 24px;
   background: ${({ theme }) => theme.black + "80"};
 `;
-const GeneratedImageCard = (loading,src) => {
+const GeneratedImageCard = ({src,loading}) => {
   return (
     <Container>
       {loading ? (

@@ -3,7 +3,6 @@ import GeneratorImageForm from "../components/GeneratorImageForm";
 import GeneratedImageCard from "../components/GeneratedImageCard";
 import styled from "styled-components";
 
-
 const Container = styled.div`
 height: 100%;
 overflow-y:scroll ;
@@ -37,9 +36,9 @@ const Wrapper = styled.div`
 `;
 
 const CreatePost = () => {
-  const [generateImageLoading,setGenerateImageLoading] = useState(false);
-  const [createPostLoading,setCreatePostLoading] = useState(false);
-  const [post,setPost] = useState({
+  const [generateImageLoading, setGenerateImageLoading] = useState(false);
+  const [createPostLoading, setCreatePostLoading] = useState(false);
+  const [post, setPost] = useState({
     name: "",
     prompt: "",
     photo: "",
@@ -47,20 +46,16 @@ const CreatePost = () => {
   return (
     <Container>
       <Wrapper>
-
-        <GeneratorImageForm 
-        post={post} 
-        setPost={setPost} 
-        createPostLoading = {createPostLoading} 
-        setCreatePostLoading = {setCreatePostLoading}
-        setGenerateImageLoading = {setGenerateImageLoading} 
-        generateImageLoading = {generateImageLoading}/>
-
-        <GeneratedImageCard 
-        src={post?.photo} 
-        loading={generateImageLoading} 
+        <GeneratorImageForm
+          post={post}
+          setPost={setPost}
+          createPostLoading={createPostLoading}
+          setGenerateImageLoading={setGenerateImageLoading}
+          generateImageLoading={generateImageLoading}
+          setCreatePostLoading={setCreatePostLoading}
         />
 
+        <GeneratedImageCard src={post?.photo} loading={generateImageLoading} />
       </Wrapper>
     </Container>
   );

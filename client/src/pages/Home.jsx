@@ -1,10 +1,9 @@
-import React from "react";
 import SearchBar from "../components/SearchBar";
 import ImageCard from "../components/ImageCard";
 import styled from "styled-components";
 import { CircularProgress } from "@mui/material";
 import { GetPosts } from "../api";
-import { useEffect } from "react";
+import { React,useEffect , useState} from "react";
 
 const Container = styled.div`
 height: 100%;
@@ -65,19 +64,22 @@ const CardWrapper = styled.div`
 `;
 
 const Home = () => {
-  const [posts,setPosts] = React.useState([]);
-  const [loading,setLoading]= React.useState(false);
-  const [error,setError]= React.useState("");
-  const [search,setSearch]= React.useState("");
-  const [filteredPosts,setFilteredPosts]= React.useState([]);
+  const [posts,setPosts] = useState([]);
+  const [loading,setLoading]= useState(false);
+  const [error,setError]= useState("");
+  const [search,setSearch]= useState("");
+  const [filteredPosts,setFilteredPosts]= useState([]);
 
 
   const getPosts = async()=>{
     setLoading (true);
     await GetPosts().then((res)=>{
       setLoading(false);
-       setPosts(res?.data?.posts);
-       setFilteredPosts(res?.data?.posts);
+       setPosts(res?.data?.data);
+       setFilteredPosts(res?.data?.data);
+    }).catch((error)=>{
+      setError(error?.response?.data?.message);
+      setLoading(false);
     });
   };
 
@@ -101,8 +103,6 @@ const Home = () => {
     if(search){
       setFilteredPosts(SearchfilteredPosts);
     }
-
-
   },[posts,search]);
 
   // const item = {
@@ -116,7 +116,7 @@ const Home = () => {
     <Container>
       <Headline>
         Explore polular posts in the Community!
-        <Span>⊙💘Generated with AI💘 ⊙</Span>
+        <Span>⊙ Generated with AI ⊙</Span>
       </Headline>
       <SearchBar search={search} setSearch={setSearch} />
 

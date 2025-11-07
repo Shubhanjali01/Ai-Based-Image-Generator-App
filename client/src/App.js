@@ -2,8 +2,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme } from "./utils/Theme";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
-import { BrowserRouter } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 
 const Container = styled.div`

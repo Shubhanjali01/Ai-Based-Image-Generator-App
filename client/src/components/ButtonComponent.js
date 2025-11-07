@@ -19,8 +19,8 @@ const Button = styled.div`
     padding: 8px 12px;
   }
 
-  ${({ type, theme }) =>
-    type === "secondary"
+  ${({ $type, theme }) =>
+    $type === "secondary"
       ? `
   background: ${theme.secondary};
   `
@@ -48,7 +48,7 @@ ${({ flex }) =>
 `}
 `;
 
-const button = ({
+const ButtonComponent = ({
   text,
   isLoading,
   isDisabled,
@@ -62,7 +62,7 @@ const button = ({
     <Button
       onClick={() => !isDisabled && !isLoading && onClick()}
       isDisabled={isDisabled}
-      type={type}
+      $type={type}
       isLoading={isLoading}
       flex={flex}
     >
@@ -79,4 +79,4 @@ const button = ({
   );
 };
 
-export default button;
+export default ButtonComponent;

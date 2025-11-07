@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AddRounded } from "@mui/icons-material";
 import { ExploreRounded } from "@mui/icons-material";
-import Button from "./button";
+import Button from "./ButtonComponent";
 
 const Container = styled.div`
   width: 100%;
@@ -34,13 +34,11 @@ const Navbar = () => {
     <Container>
       GenAI
       {path[1] === "post" ? (
-         <Button
+        <Button
           onClick={() => navigate("/post")}
           text="Explore Posts"
-          type = "secondary"
-          leftIcon={<ExploreRounded style={{ fontSize: "20px", }} />}
-
-
+          type="secondary"
+          leftIcon={<ExploreRounded style={{ fontSize: "20px" }} />}
         />
       ) : (
         <Button
